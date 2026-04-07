@@ -1,0 +1,26 @@
+[package]
+name = "typst-imgopt"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Typst image optimisation plugin (WASM)"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ciborium = { version = "0.2", default-features = false, features = ["std"] }
+image = { version = "0.25", default-features = false, features = [
+  "jpeg",
+  "png",
+] }
+serde = { version = "1.0", features = ["derive"] }
+wasm-minimal-protocol = "0.1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+opt-level = 3
+panic = "abort"
+strip = "symbols"

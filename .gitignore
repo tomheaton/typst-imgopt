@@ -1,0 +1,4 @@
+target/
+*.pdf
+typst/imgopt.wasm
+.DS_Store
